@@ -33,13 +33,13 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 650px; /* 縦長ですっきり見せる幅 */
       margin: 0 auto;
     }
 
     header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
     header h1 {
@@ -50,28 +50,25 @@
       font-weight: 400;
     }
 
-    /* 商品セクションを並べるグリッド */
-    .products-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
+    /* 商品カードを縦に並べるコンテナ */
+    .products-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 50px; /* カード同士の間隔 */
     }
 
     .product-card {
       background: var(--card-bg);
-      padding: 35px;
+      padding: 40px;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
       border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        padding: 25px;
+      }
     }
 
     /* 写真ギャラリーエリア */
@@ -120,7 +117,7 @@
 
     /* 商品情報エリア */
     .product-info h2 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 500;
       margin-bottom: 10px;
       letter-spacing: 0.03em;
@@ -134,7 +131,7 @@
     }
 
     .description {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-sub);
       margin-bottom: 25px;
     }
@@ -142,24 +139,24 @@
     /* フォーム・入力欄 */
     .checkout-form {
       border-top: 1px solid var(--border-color);
-      padding-top: 20px;
+      padding-top: 25px;
     }
 
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     label {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--text-sub);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       font-weight: 500;
     }
 
@@ -167,11 +164,11 @@
     input[type="email"],
     input[type="tel"] {
       width: 100%;
-      padding: 10px 12px;
+      padding: 12px 14px;
       border: 1px solid var(--border-color);
       background: var(--bg-color);
       border-radius: 6px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-main);
       outline: none;
     }
@@ -185,12 +182,12 @@
       background-color: var(--text-main);
       color: #fff;
       border: none;
-      padding: 14px;
+      padding: 16px;
       border-radius: 6px;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 15px;
       letter-spacing: 0.05em;
       transition: background-color 0.2s;
     }
@@ -201,9 +198,9 @@
 
     .note {
       text-align: center;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: var(--text-sub);
-      margin-top: 10px;
+      margin-top: 12px;
     }
   </style>
 </head>
@@ -214,27 +211,27 @@
       <h1>Independent Publication & Goods</h1>
     </header>
 
-    <div class="products-grid">
+    <div class="products-stack">
       
-      <!-- 1. 本のカード -->
+      <!-- 1. 本のセクション（上部） -->
       <div class="product-card">
-        <div>
-          <!-- 本の写真ギャラリー (book1.jpg, book2.jpg などに変更してね) -->
-          <div class="gallery-container">
-            <div class="main-photo">
-              <img src="book1.jpg" alt="本のメイン画像">
-            </div>
-            <div class="sub-photos">
-              <div class="sub-photo-item"><img src="book2.jpg" alt="本サンプル1"></div>
-              <div class="sub-photo-item"><img src="book3.jpg" alt="本サンプル2"></div>
-              <div class="sub-photo-item"><img src="book4.jpg" alt="本サンプル3"></div>
-            </div>
+        <!-- 本の写真ギャラリー (book1.jpg, book2.jpg など) -->
+        <div class="gallery-container">
+          <div class="main-photo">
+            <img src="book1.jpg" alt="本のメイン画像">
           </div>
+          <div class="sub-photos">
+            <div class="sub-photo-item"><img src="book2.jpg" alt="本サンプル1"></div>
+            <div class="sub-photo-item"><img src="book3.jpg" alt="本サンプル2"></div>
+            <div class="sub-photo-item"><img src="book4.jpg" alt="本サンプル3"></div>
+          </div>
+        </div>
 
+        <div class="product-info">
           <h2>作品タイトル（本）</h2>
-          <div class="price">¥1,050 <span style="font-size: 0.75rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
+          <div class="price">¥1,050 <span style="font-size: 0.8rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
           <p class="description">
-            ここに本の紹介文が入ります。ページ数やこだわりを記載するスペースです。
+            ここに本の紹介文やこだわりが入ります。ページ数やサイズ感を記載するスペースです。
           </p>
         </div>
 
@@ -260,33 +257,33 @@
             <input type="text" id="address-book" name="address" placeholder="大阪府大阪市北区〇〇 1-2-3" required>
           </div>
           <div class="form-group">
-            <label for="email-book">メールアドレス</label>
+            <label for="email-book">メールアドレス（受領確認用）</label>
             <input type="email" id="email-book" name="email" placeholder="example@email.com" required>
           </div>
-          <button type="submit" class="buy-button">本を注文する</button>
+          <button type="submit" class="buy-button">本を注文する（クレジットカードで進む）</button>
           <p class="note">※Stripeの安全な決済画面へ移動します</p>
         </form>
       </div>
 
-      <!-- 2. かるたのカード -->
+      <!-- 2. かるたのセクション（下部） -->
       <div class="product-card">
-        <div>
-          <!-- かるたの写真ギャラリー (karuta1.jpg, karuta2.jpg などに変更してね) -->
-          <div class="gallery-container">
-            <div class="main-photo">
-              <img src="karuta1.jpg" alt="かるたのメイン画像">
-            </div>
-            <div class="sub-photos">
-              <div class="sub-photo-item"><img src="karuta2.jpg" alt="かるたサンプル1"></div>
-              <div class="sub-photo-item"><img src="karuta3.jpg" alt="かるたサンプル2"></div>
-              <div class="sub-photo-item"><img src="karuta4.jpg" alt="かるたサンプル3"></div>
-            </div>
+        <!-- かるたの写真ギャラリー (karuta1.jpg, karuta2.jpg など) -->
+        <div class="gallery-container">
+          <div class="main-photo">
+            <img src="karuta1.jpg" alt="かるたのメイン画像">
           </div>
+          <div class="sub-photos">
+            <div class="sub-photo-item"><img src="karuta2.jpg" alt="かるたサンプル1"></div>
+            <div class="sub-photo-item"><img src="karuta3.jpg" alt="かるたサンプル2"></div>
+            <div class="sub-photo-item"><img src="karuta4.jpg" alt="かるたサンプル3"></div>
+          </div>
+        </div>
 
+        <div class="product-info">
           <h2>オリジナルかるた</h2>
-          <div class="price">¥2,070 <span style="font-size: 0.75rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
+          <div class="price">¥2,070 <span style="font-size: 0.8rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
           <p class="description">
-            ここにかるたのこだわりや内容物の紹介文が入ります。写真で雰囲気をお伝えできます。
+            ここにはかるたのこだわりや内容物の紹介文が入ります。写真で魅力がしっかり伝わります。
           </p>
         </div>
 
@@ -312,10 +309,10 @@
             <input type="text" id="address-karuta" name="address" placeholder="大阪府大阪市北区〇〇 1-2-3" required>
           </div>
           <div class="form-group">
-            <label for="email-karuta">メールアドレス</label>
+            <label for="email-karuta">メールアドレス（受領確認用）</label>
             <input type="email" id="email-karuta" name="email" placeholder="example@email.com" required>
           </div>
-          <button type="submit" class="buy-button">かるたを注文する</button>
+          <button type="submit" class="buy-button">かるたを注文する（クレジットカードで進む）</button>
           <p class="note">※Stripeの安全な決済画面へ移動します</p>
         </form>
       </div>
