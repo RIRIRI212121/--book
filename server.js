@@ -9,13 +9,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.post("/api/create-checkout-session", async (req, res) => {
+  // HTMLの hidden input から product_type を受け取る ("book" または "karuta")
   const productType = req.body.product_type;
   
-  // 商品の種類によってStripeの価格IDを切り替える
-  // ※あとでStripeで作った実際の価格IDに書き換えてね
-  let priceId = "price_本用のID"; 
-  if (productType === "karuta") {
-    priceId = "price_かるた用のID";
+  // 商品の種類（product_type）によってStripeの価格IDを切り替える
+  let priceId = "";
+  if (productType === "book") {
+    priceId = "price_本用の実際の価格IDに書き換えてね"; // 例: price_1N...
+  } else if (productType === "karuta") {
+    priceId = "price_かるた用の実際の価格IDに書き換えてね"; // 例: price_1N...
+  } else {
+    return res.status(400).json({ error: "Invalid product type" });
   }
 
   const sessionParams = {
