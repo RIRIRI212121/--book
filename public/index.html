@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>作品販売ページ | Special Store</title>
+  <title>オリジナルかるた | Special Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
@@ -48,13 +48,6 @@
       color: var(--text-sub);
       text-transform: uppercase;
       font-weight: 400;
-    }
-
-    /* 商品カードを縦に並べるコンテナ */
-    .products-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
     }
 
     .product-card {
@@ -127,13 +120,17 @@
       font-size: 1.3rem;
       font-weight: 500;
       color: var(--text-main);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
+    /* 説明文のスタイル（段落ごとに適度な余白を開ける） */
     .description {
       font-size: 0.95rem;
       color: var(--text-sub);
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* 説明ごとの改行間隔 */
     }
 
     /* フォーム・入力欄 */
@@ -208,66 +205,14 @@
 
   <div class="container">
     <header>
-      <h1>Independent Publication & Goods</h1>
+      <h1>Original Goods</h1>
     </header>
 
     <div class="products-stack">
       
-      <!-- 1. 本のセクション（上部） -->
+      <!-- かるたのセクション -->
       <div class="product-card">
-        <!-- 本の写真ギャラリー (book1.jpg, book2.jpg など) -->
-        <div class="gallery-container">
-          <div class="main-photo">
-            <img src="book1.jpg" alt="本のメイン画像">
-          </div>
-          <div class="sub-photos">
-            <div class="sub-photo-item"><img src="book2.jpg" alt="本サンプル1"></div>
-            <div class="sub-photo-item"><img src="book3.jpg" alt="本サンプル2"></div>
-            <div class="sub-photo-item"><img src="book4.jpg" alt="本サンプル3"></div>
-          </div>
-        </div>
-
-        <div class="product-info">
-          <h2>冊子「ろうあ運動のあけぼの」(松本晶行の巻頭言)）</h2>
-          <div class="price">¥1,050 <span style="font-size: 0.8rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
-          <p class="description">
-            ここに本の紹介文やこだわりが入ります。ページ数やサイズ感を記載するスペースです。
-          </p>
-        </div>
-
-        <!-- 本の購入フォーム -->
-        <form class="checkout-form" action="/api/create-checkout-session" method="POST">
-          <input type="hidden" name="product_type" value="book">
-          <div class="form-group">
-            <label for="name-book">お名前</label>
-            <input type="text" id="name-book" name="name" placeholder="山田 太郎" required>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="postal-book">郵便番号</label>
-              <input type="text" id="postal-book" name="postal" placeholder="530-0001" required>
-            </div>
-            <div class="form-group">
-              <label for="phone-book">電話番号</label>
-              <input type="text" id="phone-book" name="phone" placeholder="09012345678" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="address-book">お届け先住所</label>
-            <input type="text" id="address-book" name="address" placeholder="大阪府大阪市北区〇〇 1-2-3" required>
-          </div>
-          <div class="form-group">
-            <label for="email-book">メールアドレス（受領確認用）</label>
-            <input type="email" id="email-book" name="email" placeholder="example@email.com" required>
-          </div>
-          <button type="submit" class="buy-button">本を注文する（クレジットカードで進む）</button>
-          <p class="note">※Stripeの安全な決済画面へ移動します</p>
-        </form>
-      </div>
-
-      <!-- 2. かるたのセクション（下部） -->
-      <div class="product-card">
-        <!-- かるたの写真ギャラリー (karuta1.jpg, karuta2.jpg など) -->
+        <!-- かるたの写真ギャラリー (karuta1.jpg, karuta2.jpg などに変更してね) -->
         <div class="gallery-container">
           <div class="main-photo">
             <img src="karuta1.jpg" alt="かるたのメイン画像">
@@ -281,15 +226,17 @@
 
         <div class="product-info">
           <h2>手話かるた</h2>
-          <div class="price">¥2,080 <span style="font-size: 0.8rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
-          <p class="description">
-            説明1　ろうあ者と手話を学ぶ健常者とがゲームを楽しみながら手話とろうあ問題を学ぶためのかるたです。
-            説明2　1983年に最初の「手話いろはかるた」が誕生しました。時代の趨勢に合わせて新しい手話かるたを2021年に作りました。
-            説明3　とても好評ですぐに売り切れて絶版になっていましたが、再販の要望が多数あったため、このたび、増刷することになりました。
-          </p>
+          <div class="price">¥2,070 <span style="font-size: 0.8rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
+          
+          <!-- ご指定の説明文（段落ごとに改行） -->
+          <div class="description">
+            <p>ろうあ者と手話を学ぶ健常者とがゲームを楽しみながら手話とろうあ問題を学ぶためのかるたです。</p>
+            <p>1983年に最初の「手話いろはかるた」が誕生しました。時代の趨勢に合わせて新しい手話かるたを2021年に作りました。</p>
+            <p>とても好評ですぐに売り切れて絶版になっていましたが、再販の要望が多数あったため、このたび、増刷することになりました。</p>
+          </div>
         </div>
 
-        <!-- かるたの購入フォーム -->
+        <!-- かるたの購入フォーム (product_type=karuta を送信) -->
         <form class="checkout-form" action="/api/create-checkout-session" method="POST">
           <input type="hidden" name="product_type" value="karuta">
           <div class="form-group">
