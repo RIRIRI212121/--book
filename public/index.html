@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>オリジナルかるた | Special Store</title>
+  <title>手話かるた | Special Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
@@ -64,7 +64,7 @@
       }
     }
 
-    /* 写真ギャラリーエリア */
+    /* 写真ギャラリーエリア（メイン1枚 ＋ サブ2枚） */
     .gallery-container {
       display: flex;
       flex-direction: column;
@@ -89,12 +89,12 @@
 
     .sub-photos {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      grid-template-columns: repeat(2, 1fr); /* 2枚並び */
+      gap: 10px;
     }
 
     .sub-photo-item {
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 3;
       background-color: #eae7df;
       border-radius: 6px;
       overflow: hidden;
@@ -123,14 +123,13 @@
       margin-bottom: 20px;
     }
 
-    /* 説明文のスタイル（段落ごとに適度な余白を開ける） */
     .description {
       font-size: 0.95rem;
       color: var(--text-sub);
       margin-bottom: 30px;
       display: flex;
       flex-direction: column;
-      gap: 12px; /* 説明ごとの改行間隔 */
+      gap: 12px;
     }
 
     /* フォーム・入力欄 */
@@ -212,15 +211,14 @@
       
       <!-- かるたのセクション -->
       <div class="product-card">
-        <!-- かるたの写真ギャラリー (karuta1.jpg, karuta2.jpg などに変更してね) -->
+        <!-- メイン1枚 ＋ サブ2枚のギャラリー (karuta1.jpg, karuta2.jpg, karuta3.jpg) -->
         <div class="gallery-container">
           <div class="main-photo">
-            <img src="karuta1.jpg" alt="かるたのメイン画像">
+            <img src="karuta1.jpg" alt="手話かるた メイン画像">
           </div>
           <div class="sub-photos">
-            <div class="sub-photo-item"><img src="karuta2.jpg" alt="かるたサンプル1"></div>
-            <div class="sub-photo-item"><img src="karuta3.jpg" alt="かるたサンプル2"></div>
-            <div class="sub-photo-item"><img src="karuta4.jpg" alt="かるたサンプル3"></div>
+            <div class="sub-photo-item"><img src="karuta2.jpg" alt="手話かるた サブ画像1"></div>
+            <div class="sub-photo-item"><img src="karuta3.jpg" alt="手話かるた サブ画像2"></div>
           </div>
         </div>
 
@@ -228,7 +226,6 @@
           <h2>手話かるた</h2>
           <div class="price">¥2,070 <span style="font-size: 0.8rem; color: var(--text-sub);">（税込 / 送料込）</span></div>
           
-          <!-- ご指定の説明文（段落ごとに改行） -->
           <div class="description">
             <p>ろうあ者と手話を学ぶ健常者とがゲームを楽しみながら手話とろうあ問題を学ぶためのかるたです。</p>
             <p>1983年に最初の「手話いろはかるた」が誕生しました。時代の趨勢に合わせて新しい手話かるたを2021年に作りました。</p>
@@ -236,7 +233,7 @@
           </div>
         </div>
 
-        <!-- かるたの購入フォーム (product_type=karuta を送信) -->
+        <!-- かるたの購入フォーム -->
         <form class="checkout-form" action="/api/create-checkout-session" method="POST">
           <input type="hidden" name="product_type" value="karuta">
           <div class="form-group">
