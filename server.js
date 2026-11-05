@@ -9,11 +9,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.post("/api/create-checkout-session", async (req, res) => {
-  const mode = "payment";
+  const productType = req.body.product_type;
+  
+  // 商品の種類によってStripeの価格IDを切り替える
+  // ※あとでStripeで作った実際の価格IDに書き換えてね
+  let priceId = "price_本用のID"; 
+  if (productType === "karuta") {
+    priceId = "price_かるた用のID";
+  }
 
   const sessionParams = {
     ui_mode: "hosted_page",
-    mode,
+    mode: "payment",
     billing_address_collection: "auto",
     phone_number_collection: { enabled: false },
     automatic_tax: { enabled: true },
@@ -29,11 +36,9 @@ app.post("/api/create-checkout-session", async (req, res) => {
         optional: true
       }
     },
-    integration_identifier: "hosted_web_0001",
-    origin_context: "web",
     success_url: `${process.env.DOMAIN}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${process.env.DOMAIN}/cancel`,
-    line_items: [{ price: "price_...", quantity: 1 }],
+    line_items: [{ price: priceId, quantity: 1 }],
   };
 
   try {
